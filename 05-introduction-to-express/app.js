@@ -1,9 +1,6 @@
 // external module
 const express = require("express");
 
-// local module
-const userRequestHandler = require("./user");
-
 const app = express();
 
 app.get("/", (req, res, next) => {

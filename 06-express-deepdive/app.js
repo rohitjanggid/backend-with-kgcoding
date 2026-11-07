@@ -1,4 +1,6 @@
+// Extrenal Modules
 const express = require("express");
+const bodyParser = require("body-parser");
 
 const app = express();
 
@@ -37,7 +39,14 @@ app.get("/contect-us", (req, res, next) => {
 });
 
 app.post("/contect-us", (req, res, next) => {
-  console.log("Handling /contect-us for POST")
+  console.log("First handling", req.url, req.method, req.body);
+  next();
+})
+
+app.use(bodyParser.urlencoded());
+
+app.post("/contect-us", (req, res, next) => {
+  console.log("Handling /contect-us for POST", req.url, req.method, req.body)
   res.send(`<h1>Verification successfull`)
 })
 
